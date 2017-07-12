@@ -6,6 +6,10 @@ This package supports auto discovery. For laravel versions &lt; 5.5, add the fol
 ```
 Kbs1\Abbreviations\AbbreviationsServiceProvider::class,
 ```
+Add the following line in `config/app.php` aliases section:
+```
+'Abbreviation' => Kbs1\Abbreviations\Abbreviation::class,
+```
 
 ## Usage
 In laravel models, use the following trait:

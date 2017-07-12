@@ -8,8 +8,6 @@ class AbbreviationsServiceProvider extends ServiceProvider
 {
 	public function register()
 	{
-		$this->app->bind('Abbreviation', function() {
-			return new \Kbs1\Abbreviation;
-		});
+		$this->app->singleton(\Kbs1\Abbreviations\AbbreviationService::class);
 	}
 }
