@@ -14,7 +14,7 @@ Add the following line in `config/app.php` aliases section:
 ## Usage
 In laravel models, use the following trait:
 ```
-use Kbs1\Abbreviations\HasAbbreviation;
+use \Kbs1\Abbreviations\HasAbbreviation;
 ```
 Now you can get model's abbreviation simply by getting the `$model->abbreviation` attribute.
 
