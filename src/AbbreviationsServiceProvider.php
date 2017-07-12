@@ -8,6 +8,6 @@ class AbbreviationsServiceProvider extends ServiceProvider
 {
 	public function register()
 	{
-		$this->app->singleton(\Kbs1\Abbreviations\AbbreviationService::class);
+		$this->app->singleton(\Kbs1\Abbreviations\AbbreviationsService::class);
 	}
 }
