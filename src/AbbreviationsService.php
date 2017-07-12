@@ -17,13 +17,13 @@ class AbbreviationsService
 					$letters[] = $matches[5][$key];
 			}
 
-			return mb_substr(implode('', $letters), 0, 3);
+			return mb_strtoupper(mb_substr(implode('', $letters), 0, 3));
 		}
 
 		$name = trim(preg_replace('/[0-9\s_-]+/siu', ' ', $string));
 		if (mb_strlen($name) >= 2)
-			return mb_substr($name, 0, 3);
+			return mb_strtoupper(mb_substr($name, 0, 3));
 
-		return mb_substr(trim($string), 0, 3);
+		return mb_strtoupper(mb_substr(trim($string), 0, 3));
 	}
 }

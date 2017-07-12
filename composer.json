@@ -21,7 +21,10 @@
 		"laravel": {
 			"providers": [
 				"Kbs1\\Abbreviations\\AbbreviationsServiceProvider"
-			]
+			],
+			"aliases": {
+				"Abbreviation": "Kbs1\\Abbreviations\\Abbreviation"
+			}
 		}
 	}
 }
