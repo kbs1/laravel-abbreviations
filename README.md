@@ -1,6 +1,13 @@
-# Laravel Abbreviations
+# Laravel abbreviations
 Simply create human-readable abbreviations / acronyms for any model, or abbreviations / acronyms in general.
 
+## Installation
+This package supports auto discovery. For laravel versions &lt; 5.5, add the following line in `config/app.php` providers section:
+```
+Kbs1\Abbreviations\AbbreviationsServiceProvider::class,
+```
+
+## Usage
 In laravel models, use the following trait:
 ```
 use Kbs1\Abbreviations\HasAbbreviation;
