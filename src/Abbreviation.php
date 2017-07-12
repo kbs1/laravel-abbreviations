@@ -8,6 +8,6 @@ class Abbreviation extends Facade
 {
 	protected static function getFacadeAccessor()
 	{
-		return 'AbbreviationsService';
+		return \Kbs1\Abbreviations\AbbreviationsService::class;
 	}
 }
