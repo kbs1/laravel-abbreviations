@@ -22,4 +22,10 @@ Now you can get model's abbreviation simply by getting the `$model->abbreviation
 Trait by default uses the `name` attribute of a model. You can override this behavior by overriding the `abbreviationAttribute` method in your model code.
 
 ## Generic abbreviations / acronyms
-Anywhere in your application, you can call `Abbreviation::make($string)` to generate abbreviations on the fly.
+Anywhere in your application, you can call `Abbreviation::make($string)` or `abbreviate($string)` helper to generate abbreviations on the fly.
+
+## Configuration
+After publishing the config with `php artisan vendor:publish --tag=abbreviations`, you can define maximum generated abbreviations length (default `3`),
+generated abbreviations case (`uppercase`, `lowercase` or `original`), and whether you prefer to include digits in generated abbreviations (default `false`).
+
+See comments in published configuration file for further details.
