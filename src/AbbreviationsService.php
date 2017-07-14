@@ -32,7 +32,7 @@ class AbbreviationsService
 					$letters[] = $matches[5][$key];
 			}
 
-			return $this->finishAbbreviation($letters);
+			return $this->finishAbbreviation(implode('', $letters));
 		}
 
 		$clean_string = trim(preg_replace($this->digits ? '/[\s\W]+/siu' : '/[0-9\s\W]+/siu', ' ', $string));
