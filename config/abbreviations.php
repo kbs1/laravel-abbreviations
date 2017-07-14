@@ -8,7 +8,7 @@ return [
 	// one of 'lower', 'upper', 'original'
 	'case' => 'upper',
 
-	// allow digits in generated abbreviations? If true, library will try to aviod this, but for strings like "987",
+	// allow digits in generated abbreviations? If false, library will try to aviod this, but for strings like "987",
 	// generated abbreviations will still contain digits.
 	'digits' => false,
 ];

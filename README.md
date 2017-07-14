@@ -29,3 +29,25 @@ After publishing the config with `php artisan vendor:publish --tag=abbreviations
 generated abbreviations case (`uppercase`, `lowercase` or `original`), and whether you prefer to include digits in generated abbreviations (default `false`).
 
 See comments in published configuration file for further details.
+
+## Examples
+Using default configuration:
+- `abbreviate('somestring') == 'SOM'`
+- `abbreviate('[7] => somestring') == 'SOM'`
+- `abbreviate('K-9 mail widget') == 'KMW'`
+- `abbreviate('GPSLoc') == 'GL'`
+- `abbreviate('14Logistics internal system') == 'LIS'`
+- `abbreviate('#1411: fix fooBar status') == 'FFB'`
+- `abbreviate('#1234: deploy') == 'DEP'`
+- `abbreviate('#1234:777: 500 words 7 characters long') == 'WCL'`
+- `abbreviate('#1234:777: 500 words 700b') == 'WB'`
+- `abbreviate('#1234:777: 500') == '#12'`
+- `abbreviate('123456abcde') == 'ABC'`
+
+Allowing digits:
+- `abbreviate('K-9 mail widget') == 'KMW'` (non digit matching is always preferred)
+- `abbreviate('[7] => somestring') == '7S'`
+- `abbreviate('#1234: deploy') == '1D'`
+- `abbreviate('#1234:777: 500 words 700b') == '175'`
+- `abbreviate('#1234:777: 500') == '175'`
+- `abbreviate('123456abcde') == '123'`

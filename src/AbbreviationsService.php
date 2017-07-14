@@ -21,7 +21,7 @@ class AbbreviationsService
 
 	public function make($string)
 	{
-		if (preg_match_all('/(^|\s)(\p{L})|(^|\p{Ll})(\p{Lu})|(\p{Lu})(\p{Ll})/u', $string, $matches) && count($matches[2]) + count($matches[4]) + count($matches[5]) >= 2) {
+		if (preg_match_all('/(^|\s)(\p{L})|(^|\p{Ll})(\p{Lu})|(\p{Lu})(\p{Ll})/u', $string, $matches) && $this->countNonEmpty($matches[2]) + $this->countNonEmpty($matches[4]) + $this->countNonEmpty($matches[5]) >= 2) {
 			$letters = [];
 			foreach ($matches[2] as $key => $letter) {
 				if ($letter !== '')
@@ -32,7 +32,7 @@ class AbbreviationsService
 					$letters[] = $matches[5][$key];
 			}
 
-			return $this->makeCase(mb_substr(implode('', $letters), 0, $this->maximum_length));
+			return $this->finishAbbreviation($letters);
 		}
 
 		$clean_string = trim(preg_replace($this->digits ? '/[\s\W]+/siu' : '/[0-9\s\W]+/siu', ' ', $string));
@@ -49,6 +49,11 @@ class AbbreviationsService
 			return $this->finishAbbreviation($clean_string);
 
 		return $this->finishAbbreviation($string);
+	}
+
+	protected function countNonEmpty($array)
+	{
+		return count(array_filter($array));
 	}
 
 	protected function finishAbbreviation($string)
