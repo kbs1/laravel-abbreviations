@@ -22,7 +22,7 @@ class AbbreviationsServiceProvider extends ServiceProvider
 		);
 
 		$this->app->singleton(AbbreviationsService::class, function ($app) {
-			return new AbbreviationsService(config('abbreviations.maximum_length'), config('abbreviations.case'), config('abbreviations.digits'));
+			return new AbbreviationsService(config('abbreviations.maximum_length'), config('abbreviations.case'), config('abbreviations.digits'), config('abbreviations.remove_abbreviations'));
 		});
 	}
 
