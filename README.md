@@ -26,13 +26,18 @@ Anywhere in your application, you can call `Abbreviation::make($string)` or `abb
 
 ## Configuration
 After publishing the config with `php artisan vendor:publish --tag=abbreviations`, you can define maximum generated abbreviations length (default `3`),
-generated abbreviations case (`uppercase`, `lowercase` or `original`), and whether you prefer to include digits in generated abbreviations (default `false`).
+generated abbreviations case (`uppercase`, `lowercase` or `original`), whether you prefer to include digits in generated abbreviations (default `false`),
+and whether to remove existing abbreviations from source string before processing (default `true`).
 
 See comments in published configuration file for further details.
 
 ## Examples
 Using default configuration:
 - `abbreviate('somestring') == 'SOM'`
+- `abbreviate('somestring w/meaning') == 'SM'`
+- `abbreviate('somestring w/o meaning') == 'SM'`
+- `abbreviate('somestring incl. others') == 'SO'`
+- `abbreviate('Ing. Name Surname, PhD.') == 'NS'`
 - `abbreviate('[7] => somestring') == 'SOM'`
 - `abbreviate('K-9 mail widget') == 'KMW'`
 - `abbreviate('GPSLoc') == 'GL'`

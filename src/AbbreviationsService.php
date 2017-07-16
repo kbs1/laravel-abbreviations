@@ -4,9 +4,9 @@ namespace Kbs1\Abbreviations;
 
 class AbbreviationsService
 {
-	protected $maximum_length, $case, $digits;
+	protected $maximum_length, $case, $digits, $remove_abbreviations;
 
-	public function __construct($maximum_length, $case, $digits)
+	public function __construct($maximum_length, $case, $digits, $remove_abbreviations)
 	{
 		if ($maximum_length < 1)
 			throw new \InvalidArgumentException('Abbreviations maximum length must be greater than 0.');
@@ -17,10 +17,14 @@ class AbbreviationsService
 		$this->maximum_length = intval($maximum_length);
 		$this->case = $case;
 		$this->digits = $digits ? true : false;
+		$this->remove_abbreviations = $remove_abbreviations ? true : false;
 	}
 
 	public function make($string)
 	{
+		if ($this->remove_abbreviations)
+			$string = $this->removeAbbreviations($string);
+
 		if (preg_match_all('/(^|\s)(\p{L})|(^|\p{Ll})(\p{Lu})|(\p{Lu})(\p{Ll})/u', $string, $matches) && $this->countNonEmpty($matches[2]) + $this->countNonEmpty($matches[4]) + $this->countNonEmpty($matches[5]) >= 2) {
 			$letters = [];
 			foreach ($matches[2] as $key => $letter) {
@@ -49,6 +53,21 @@ class AbbreviationsService
 			return $this->finishAbbreviation($clean_string);
 
 		return $this->finishAbbreviation($string);
+	}
+
+	protected function removeAbbreviations($string)
+	{
+		// tries to remove abbreviations from source string, if the resulting string is still suitable for abbreviation, returns the result,
+		// otherwise returns original string
+
+		$clean_string = preg_replace('/\w+[.\/]+/siu', '', trim($string));
+		$clean_string = preg_replace('/\w+\/+\w+/siu', '', $clean_string);
+		$clean_string = preg_replace('/\s+/siu', ' ', $clean_string);
+
+		if (trim($clean_string) !== '')
+			return $clean_string;
+
+		return $string;
 	}
 
 	protected function countNonEmpty($array)

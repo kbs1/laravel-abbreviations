@@ -11,4 +11,7 @@ return [
 	// allow digits in generated abbreviations? If false, library will try to aviod this, but for strings like "987",
 	// generated abbreviations will still contain digits.
 	'digits' => false,
+
+	// remove abbreviations from source string? Removes phrases like "incl." or "w/" before processing.
+	'remove_abbreviations' => true,
 ];
