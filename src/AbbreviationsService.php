@@ -60,8 +60,9 @@ class AbbreviationsService
 		// tries to remove abbreviations from source string, if the resulting string is still suitable for abbreviation, returns the result,
 		// otherwise returns original string
 
-		$clean_string = preg_replace('/\w+[.\/]+/siu', '', trim($string));
+		$clean_string = trim($string);
 		$clean_string = preg_replace('/\w+\/+\w+/siu', '', $clean_string);
+		$clean_string = preg_replace('/\w+[.\/]+/siu', '', $clean_string);
 		$clean_string = preg_replace('/\s+/siu', ' ', $clean_string);
 
 		if (trim($clean_string) !== '')
