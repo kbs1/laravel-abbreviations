@@ -34,7 +34,7 @@ See comments in published configuration file for further details.
 ## Examples
 Using default configuration:
 - `abbreviate('somestring') == 'SOM'`
-- `abbreviate('somestring w/meaning') == 'SM'`
+- `abbreviate('somestring w/ meaning') == 'SM'`
 - `abbreviate('somestring w/o meaning') == 'SM'`
 - `abbreviate('somestring incl. others') == 'SO'`
 - `abbreviate('Ing. Name Surname, PhD.') == 'NS'`

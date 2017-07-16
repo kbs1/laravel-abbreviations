@@ -62,7 +62,7 @@ class AbbreviationsService
 
 		$clean_string = trim($string);
 		$clean_string = preg_replace('/\w{1,2}\/+\w{1,2}/siu', '', $clean_string);
-		$clean_string = preg_replace('/\w{1,2}[.\/]+/siu', '', $clean_string);
+		$clean_string = preg_replace('/\w+[.\/]+/siu', '', $clean_string);
 		$clean_string = preg_replace('/\s+/siu', ' ', $clean_string);
 
 		if (trim($clean_string) !== '')
